@@ -1,4 +1,4 @@
-logo_url: https://doc.example.com/img/avatarStatic.png
+logo_url: https://documentsite.netlify.app/img/avatarStatic.png
 backend:
   name: github
   branch: master
