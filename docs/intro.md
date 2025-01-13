@@ -52,7 +52,7 @@ To upload and manage media files (images, videos, etc.):
 
 To manage the list of authors, you can edit the `authors.json` file in the repository. The list of authors appears in blog posts.
 
-*Authors list*: [Authors](https://github.com/QuangLiem59/base-documentation-site/edit/master/blog/authors.json)
+*Authors list*: [Authors](https://github.com/QuangLiem59/BaseDocumentationSite/edit/master/blog/authors.json)
 
 ---
 
