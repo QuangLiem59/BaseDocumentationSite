@@ -6,7 +6,7 @@ tags:
   - Introduction
   - documentation
 ---
-# Introduction.
+# Introduction
 
 Welcome to the documentation section! This section covers documents, guidelines, and resources related to our company. Here, you will find valuable information to help you navigate our processes, understand our policies, and get acquainted with our projects.
 
