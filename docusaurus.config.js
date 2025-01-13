@@ -13,7 +13,7 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.example.com',
+  url: 'https://documentsite.netlify.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -48,13 +48,13 @@ const config = {
           editUrl: ({ docPath }) => {
             const firstSlashIndex = docPath.indexOf('/');
             if (firstSlashIndex === -1) {
-              return 'https://docs.example.com/admin';
+              return 'https://documentsite.netlify.app/admin';
             }
 
             const collection = docPath.substring(0, firstSlashIndex);
             const entry = docPath.substring(firstSlashIndex);
 
-            return `https://docs.example.com/admin/#/collections/${collection}/entries${entry.replace('.md', '')}`;
+            return `https://documentsite.netlify.app/admin/#/collections/${collection}/entries${entry.replace('.md', '')}`;
           }
         },
         blog: {
@@ -69,7 +69,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: ({ blogPath }) => {
-            return `https://docs.example.com/admin/#/collections/blog/entries/${blogPath.replace('.md', '')}`;
+            return `https://documentsite.netlify.app/admin/#/collections/blog/entries/${blogPath.replace('.md', '')}`;
           },
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
