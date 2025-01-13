@@ -1,0 +1,271 @@
+logo_url: https://doc.example.com/img/avatarStatic.png
+backend:
+  name: github
+  branch: master
+  repo: QuangLiem59/base-documentation-site
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+media_folder: static/img/uploads
+public_folder: /img/uploads
+
+collections:
+  # Define a collection for managing categories
+  # - name: categories
+  #   label: Categories
+  #   folder: docs
+  #   create: true
+  #   slug: '{{slug}}/_category_'
+  #   extension: json
+  #   format: json
+  #   identifier_field: label
+  #   fields:
+  #     - { name: label, label: Category Label, widget: string, required: true }
+  #     - { name: position, label: Position, widget: number, required: false }
+  #     - { name: description, label: Description, widget: text, required: false }
+  #     - name: link
+  #       label: 'Link'
+  #       widget: 'object'
+  #       required: false
+  #       fields:
+  #         - {
+  #             name: slug,
+  #             label: 'Slug',
+  #             widget: 'select',
+  #             options: ['docs/documentation', 'docs/rule', 'docs/be', 'docs/fe'],
+  #             default: 'docs/documentation',
+  #             required: true,
+  #           }
+  #         - {
+  #             name: type,
+  #             label: 'Link Type',
+  #             widget: 'select',
+  #             options: ['generated-index', 'doc', 'external'],
+  #             default: 'generated-index',
+  #             required: true,
+  #           }
+  #         - {
+  #             name: description,
+  #             label: 'Link Description',
+  #             widget: 'text',
+  #             required: false,
+  #           }
+
+  # Tags collection (to store and manage tags)
+  # - name: tags
+  #   label: Tags
+  #   folder: tags
+  #   create: true
+  #   slug: '{{tag}}'
+  #   fields:
+  #     - { name: tag, label: Tag, widget: string, required: true }
+
+  # Authors collection (to store and manage authors)
+  # - name: authors
+  #   label: Authors
+  #   folder: authors
+  #   create: true
+  #   slug: '{{name}}'
+  #   fields:
+  #     - { name: name, label: Name, widget: string, required: true } # Author's name
+  #     - { name: title, label: Title, widget: string, required: true } # Author's title
+  #     - {
+  #         name: url,
+  #         label: URL,
+  #         widget: string,
+  #         required: false,
+  #         pattern:
+  #           [
+  #             '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+  #             'Must be a valid URL',
+  #           ],
+  #       } # Author's URL
+  #     - {
+  #         name: image_url,
+  #         label: ImageURL,
+  #         widget: string,
+  #         required: false,
+  #         pattern:
+  #           [
+  #             '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+  #             'Must be a valid image URL',
+  #           ],
+  #       } # Author's image URL
+
+  # - name: authors
+  #   label: Authors
+  #   identifier_field: name
+  #   files:
+  #     - label: 'Blog Authors'
+  #       name: 'authors'
+  #       file: 'blog/authors.json'
+  #       fields:
+  #         - label: 'ID'
+  #           name: '{{slug}}'
+  #           widget: 'object'
+  #           fields:
+  #             - { label: 'Name', name: 'name', widget: 'string' }
+  #             - { label: 'Title', name: 'title', widget: 'string' }
+  #             - {
+  #                 name: url,
+  #                 label: URL,
+  #                 widget: string,
+  #                 required: false,
+  #                 pattern:
+  #                   [
+  #                     '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+  #                     'Must be a valid URL',
+  #                   ],
+  #               }
+  #             - {
+  #                 name: image_url,
+  #                 label: Image URL,
+  #                 widget: string,
+  #                 required: false,
+  #                 pattern:
+  #                   [
+  #                     '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+  #                     'Must be a valid image URL',
+  #                   ],
+  #               }
+  #             - { label: 'Has Page', name: 'page', widget: 'boolean' }
+  #             - label: 'Social Links'
+  #               name: 'socials'
+  #               widget: 'object'
+  #               required: false
+  #               fields:
+  #                 - {
+  #                     label: 'LinkedIn',
+  #                     name: 'linkedin',
+  #                     widget: 'string',
+  #                     required: false,
+  #                   }
+  #                 - {
+  #                     label: 'GitHub',
+  #                     name: 'github',
+  #                     widget: 'string',
+  #                     required: false,
+  #                   }
+
+  - name: documentation
+    label: Documentation
+    folder: docs/documentation
+    create: true
+    widget: 'list'
+    identifier_field: sidebar_label
+    slug: '{{sidebar_label | slugify}}'
+    fields:
+      - { name: sidebar_label, label: Sidebar Label, widget: string }
+      - { name: title, label: Title, widget: string }
+      # - {
+      #     name: slug,
+      #     label: Slug,
+      #     widget: hidden,
+      #     default: '{{slug}}',
+      #   }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: 'Tags', widget: 'list', required: false }
+
+  - name: rule
+    label: Rule
+    folder: docs/rule
+    create: true
+    widget: 'list'
+    identifier_field: sidebar_label
+    slug: '{{sidebar_label | slugify}}'
+    fields:
+      - { name: sidebar_label, label: Sidebar Label, widget: string }
+      - { name: title, label: Title, widget: string }
+      # - {
+      #     name: slug,
+      #     label: Slug,
+      #     widget: hidden,
+      #     default: '{{slug}}',
+      #   }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: 'Tags', widget: 'list', required: false }
+
+  - name: be
+    label: Backend
+    folder: docs/be
+    create: true
+    widget: 'list'
+    identifier_field: sidebar_label
+    slug: '{{sidebar_label | slugify}}'
+    fields:
+      - { name: sidebar_label, label: Sidebar Label, widget: string }
+      - { name: title, label: Title, widget: string }
+      # - {
+      #     name: slug,
+      #     label: Slug,
+      #     widget: hidden,
+      #     default: '{{slug}}',
+      #   }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: 'Tags', widget: 'list', required: false }
+
+  - name: fe
+    label: Frontend
+    folder: docs/fe
+    create: true
+    widget: 'list'
+    identifier_field: sidebar_label
+    slug: '{{sidebar_label | slugify}}'
+    fields:
+      - { name: sidebar_label, label: Sidebar Label, widget: string }
+      - { name: title, label: Title, widget: string }
+      # - {
+      #     name: slug,
+      #     label: Slug,
+      #     widget: hidden,
+      #     default: '{{slug}}',
+      #   }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: 'Tags', widget: 'list', required: false }
+
+  - name: blog
+    label: Blog
+    folder: blog
+    create: true
+    widget: 'list'
+    slug: '{{year}}-{{month}}-{{day}}-{{title | slugify}}'
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: body, label: Body, widget: markdown }
+      - { name: tags, label: 'Tags', widget: 'list', required: false }
+      - label: 'Authors'
+        name: 'authors'
+        required: false
+        multiple: true
+        widget: 'select'
+        options: ['liemhuynh', 'tranminhhung', 'buiminhduong']
+        # widget: 'list'
+        # fields:
+        #   - { label: 'Name', name: 'name', widget: 'string' }
+        #   - { label: 'Title', name: 'title', widget: 'string' }
+        #   - {
+        #       name: url,
+        #       label: URL,
+        #       widget: string,
+        #       required: false,
+        #       pattern:
+        #         [
+        #           '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+        #           'Must be a valid URL',
+        #         ],
+        #     }
+        #   - {
+        #       name: image_url,
+        #       label: Image URL,
+        #       widget: string,
+        #       required: false,
+        #       pattern:
+        #         [
+        #           '[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&\\=]*)',
+        #           'Must be a valid image URL',
+        #         ],
+        #     }
