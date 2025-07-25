@@ -380,6 +380,18 @@ module.exports = {
 };
 ```
 
+```javascript
+export default {
+    '*.{ts,js}': [
+        'eslint --fix',
+        'prettier --write',
+    ],
+    '*.{json,md,yml,yaml}': [
+        'prettier --write',
+    ],
+};
+```
+
 ## 8. EditorConfig
 
 Create `.editorconfig`:
